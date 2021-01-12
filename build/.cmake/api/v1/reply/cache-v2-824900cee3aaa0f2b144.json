@@ -2428,6 +2428,30 @@
 			],
 			"type" : "UNINITIALIZED",
 			"value" : ""
+		},
+		{
+			"name" : "main_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/media/dj/DJ/Senior College/Distributed Systems/Assignments/Assignment 4/Program/build"
+		},
+		{
+			"name" : "main_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/media/dj/DJ/Senior College/Distributed Systems/Assignments/Assignment 4/Program"
 		}
 	],
 	"kind" : "cache",

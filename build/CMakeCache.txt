@@ -400,6 +400,12 @@ SLURM_SRUN_COMMAND:FILEPATH=SLURM_SRUN_COMMAND-NOTFOUND
 //Path to a program.
 SVNCOMMAND:FILEPATH=SVNCOMMAND-NOTFOUND
 
+//Value Computed by CMake
+main_BINARY_DIR:STATIC=/media/dj/DJ/Senior College/Distributed Systems/Assignments/Assignment 4/Program/build
+
+//Value Computed by CMake
+main_SOURCE_DIR:STATIC=/media/dj/DJ/Senior College/Distributed Systems/Assignments/Assignment 4/Program
+
 
 ########################
 # INTERNAL cache entries

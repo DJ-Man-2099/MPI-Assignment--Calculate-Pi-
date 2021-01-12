@@ -42,7 +42,8 @@
 						25,
 						26,
 						27,
-						28
+						28,
+						29
 					]
 				}
 			],
@@ -85,7 +86,8 @@
 						25,
 						26,
 						27,
-						28
+						28,
+						29
 					]
 				}
 			],
@@ -94,7 +96,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Assignment4::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Assignment4-Debug-e2ca84adada0a31fca95.json",
+					"jsonFile" : "target-Assignment4-Debug-602c52033713edfd2866.json",
 					"name" : "Assignment4",
 					"projectIndex" : 0
 				},
@@ -292,6 +294,13 @@
 					"id" : "NightlyUpdate::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-NightlyUpdate-Debug-b681408b94dc782d2255.json",
 					"name" : "NightlyUpdate",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "main::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main-Debug-4fbe26db8d56eb757454.json",
+					"name" : "main",
 					"projectIndex" : 0
 				}
 			]

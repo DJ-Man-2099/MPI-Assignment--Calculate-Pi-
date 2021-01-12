@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     if (rank == 0)
     {
         upper_limit = atoi(argv[1]);
-        printf("This is a program to calculate the value of pi\nupper limit = %ld, no. of processes = %d\n", upper_limit, size);
+        printf("upper limit = %ld, no. of processes = %d\n", upper_limit, size);
         int start_buf_size = ceil(upper_limit / size); //get max size of start buffer
         buf_size = floor(upper_limit / size);          //get max size of buffer
         buf = new int[start_buf_size];

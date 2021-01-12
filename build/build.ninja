@@ -82,6 +82,39 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 
 build NightlyMemCheck: phony CMakeFiles/NightlyMemCheck
 
+# =============================================================================
+# Object build statements for EXECUTABLE target main
+
+
+#############################################
+# Order-only phony target for main
+
+build cmake_object_order_depends_target_main: phony || CMakeFiles/main.dir
+
+build CMakeFiles/main.dir/entery.cpp.o: CXX_COMPILER__main ../entery.cpp || cmake_object_order_depends_target_main
+  DEP_FILE = CMakeFiles/main.dir/entery.cpp.o.d
+  FLAGS = -g
+  INCLUDES = -I/usr/include/x86_64-linux-gnu/gmp -isystem /usr/include/x86_64-linux-gnu/mpich
+  OBJECT_DIR = CMakeFiles/main.dir
+  OBJECT_FILE_DIR = CMakeFiles/main.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target main
+
+
+#############################################
+# Link the executable main
+
+build main: CXX_EXECUTABLE_LINKER__main CMakeFiles/main.dir/entery.cpp.o
+  FLAGS = -g
+  LINK_FLAGS = -rdynamic
+  OBJECT_DIR = CMakeFiles/main.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = main
+  TARGET_PDB = main.dbg
+
 
 #############################################
 # Utility command for NightlyTest
@@ -525,7 +558,7 @@ build CMakeFiles/ContinuousSubmit: CUSTOM_COMMAND
 #############################################
 # Folder: /media/dj/DJ/Senior College/Distributed Systems/Assignments/Assignment 4/Program/build
 
-build all: phony Assignment4
+build all: phony main Assignment4
 
 # =============================================================================
 # Unknown Build Time Dependencies.
