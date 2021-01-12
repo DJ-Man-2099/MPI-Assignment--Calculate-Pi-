@@ -1,43 +1,58 @@
 #include <mpi/mpi.h>
 #include <stdio.h>
 #include <cmath>
-#include <gmp/gmp.h>
+#include <gmp/gmpxx.h>
+#include <vector>
 
 using namespace std;
 
-void fact(int i, mpf_t res)
+vector<mpf_class> factorials;
+
+mpf_class fact(int i)
 {
-    mpf_t temp;
-    mpf_init(temp);
-    mpf_set_ui(temp, 1);
-    for (size_t j = 1; j < i + 1; j++)
+    mpf_class temp = 1;
+    if (i < factorials.size())
     {
-        mpf_mul_ui(temp, temp, j);
+        return factorials[i];
     }
-    mpf_set(res, temp);
-    mpf_clear(temp);
+    else
+    {
+        int index = factorials.size() - 1;
+        temp = factorials[index];
+        for (size_t j = index+1 ; j <= i; j++)
+        {
+            temp*=j;
+            factorials.push_back(temp);
+        }
+    }
+    return temp;
 }
 
 int main(int argc, char **argv)
 {
+
     long unsigned int upper_limit;
     int rank, size, buf_size;
     int start = 0;
     int *buf;
-    float local_pi = 0.0;
-    mpf_t num;
-    mpf_t den;
+    mpf_class local_pi = 0.0;
+    mpf_class num;
+    mpf_class den;
     MPI_Status status;
-    mpf_init(num);
-    mpf_init(den);
     MPI_Init(NULL, NULL);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
+
+    for (size_t i = 0; i < 2; i++)
+    {
+        factorials.push_back(1);
+    }
 
     //Get User input
     if (rank == 0)
     {
         upper_limit = atoi(argv[1]);
+        //upper_limit = 1000;
         printf("upper limit = %ld, no. of processes = %d\n", upper_limit, size);
         int start_buf_size = ceil(upper_limit / size); //get max size of start buffer
         buf_size = floor(upper_limit / size);          //get max size of buffer
@@ -62,12 +77,11 @@ int main(int argc, char **argv)
     for (size_t i = 0; i < buf_size; i++)
     {
         long long unsigned int value = start + i;
-        fact(value, num);
-        mpf_mul(num, num, num);
-        fact(2 * value + 1, den);
-        mpf_div(num, num, den);
-        double r = mpf_get_d(num);
-        local_pi += r * pow(2, value + 1);
+        num = fact(value);
+        num*=num;
+        den = fact(2 * value + 1);
+        num/=den;
+        local_pi += num * pow(2, value + 1);
     }
 
     //send/receive result
@@ -86,12 +100,10 @@ int main(int argc, char **argv)
             local_pi += ans;
         }
 
-        printf("pi = %lf\n", local_pi);
+        printf("pi = %f\n", local_pi.get_d());
     }
 
-    mpf_clear(num);
-    mpf_clear(den);
     MPI_Finalize();
-    
+
     return 0;
 }
